@@ -9,7 +9,7 @@ class PDFIngestor(IngestorInterface):
     allowed_extensions = ['pdf']
 
     @classmethod
-    def parse(cls, path: str):
+    def parse(cls, path: str)->List[QuoteModel]:
         if not cls.can_ingest(path):
             raise Exception('cannot ingest exception')
 

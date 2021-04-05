@@ -13,7 +13,7 @@ class TXTIngestor(IngestorInterface):
     allowed_extensions = ['txt']
 
     @classmethod
-    def parse(cls, path: str):
+    def parse(cls, path: str)->List[QuoteModel]:
         if not cls.can_ingest(path):
             raise Exception('cannot ingest exception')
 

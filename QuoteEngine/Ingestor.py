@@ -1,17 +1,18 @@
 from typing import List
 
-from .IngestorInterface import IngestorInterface, QuoteModel 
-from .DocxImporter import DocxImporter
+from .IngestorInterface import IngestorInterface
+from .QuoteModel import QuoteModel
+from .DocxIngestor import DocxIngestor
 from .CSVIngestor import CSVIngestor
-from .PDFIngestor import PDFImporter, PDFIngestor
+from .PDFIngestor import PDFIngestor
 from .TXTIngestor import TXTIngestor
 
 
 class Ingestor(IngestorInterface):
-    importers = [DocxImporter, CSVImporter, PDFIngestor]
+    ingestors = [DocxIngestor, CSVIngestor, PDFIngestor, TXTIngestor]
 
     @classmethod
-    def parse(cls, path: str) -> List[QuoteModel.QuoteModel]:
-        for importer in cls.importers:
-            if importer.can_ingest(path):
-                return importer.parse(path)
+    def parse(cls, path: str)->List[QuoteModel]:
+        for ingestor in cls.ingestors:
+            if ingestor.can_ingest(path):
+                return ingestor.parse(path)
