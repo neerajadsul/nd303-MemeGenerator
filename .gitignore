@@ -5,3 +5,4 @@
 *.jpg
 *.pyc
 venv_memegen/
+.vscode/
