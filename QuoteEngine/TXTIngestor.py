@@ -9,15 +9,16 @@ One quote per line.
 body and author are separated by ' - '
 """
 
+
 class TXTIngestor(IngestorInterface):
     allowed_extensions = ['txt']
 
     @classmethod
-    def parse(cls, path: str)->List[QuoteModel]:
+    def parse(cls, path: str) -> List[QuoteModel]:
         if not cls.can_ingest(path):
             raise Exception('cannot ingest exception')
 
-        quotes = []        
+        quotes = []
 
         with open(path, 'r') as f:
             data = f.readlines()

@@ -5,22 +5,23 @@ from typing import List
 from .QuoteModel import QuoteModel
 from .IngestorInterface import IngestorInterface
 
+
 class PDFIngestor(IngestorInterface):
     allowed_extensions = ['pdf']
 
     @classmethod
-    def parse(cls, path: str)->List[QuoteModel]:
+    def parse(cls, path: str) -> List[QuoteModel]:
         if not cls.can_ingest(path):
             raise Exception('cannot ingest exception')
 
-        temp_path = '/Users/Neeraj/Development/meme_generator/tmp/' + str(random.randint(1000,2000)) + '.txt'
-        p = subprocess.run(["pdftotext", "-layout" , path, temp_path], timeout=2)
+        temp = 'tmp/' + str(random.randint(1000, 2000)) + '.txt'
+        p = subprocess.run(["pdftotext", "-layout", path, temp], timeout=2)
         quotes = []
-        with open(temp_path, 'r') as f:
+        with open(temp, 'r') as f:
             content = f.readlines()
-            
-        subprocess.run(["rm", temp_path])
-        
+
+        subprocess.run(["rm", temp])
+
         for line in content:
             split_content = line.strip().split(' - ')
             if len(split_content) == 2:
@@ -28,4 +29,3 @@ class PDFIngestor(IngestorInterface):
                 quotes.append(new_quote)
 
         return quotes
-                

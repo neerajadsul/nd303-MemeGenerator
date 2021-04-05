@@ -10,11 +10,12 @@ One quote per line.
 body and author are separated by ' - '
 """
 
+
 class DocxIngestor(IngestorInterface):
     allowed_extensions = ['docx']
 
     @classmethod
-    def parse(cls, path: str)->List[QuoteModel]:
+    def parse(cls, path: str) -> List[QuoteModel]:
         if not cls.can_ingest(path):
             raise Exception('cannot ingest exception')
 
