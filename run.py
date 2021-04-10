@@ -1,18 +1,8 @@
-import argparse
-import random
-
 from QuoteEngine import CSVIngestor, DocxIngestor, PDFIngestor, TXTIngestor
 from QuoteEngine import Ingestor
 from MemeEngine import MemeEngine
 
 if __name__ == '__main__':
-   parser = argparse.ArgumentParser(description='Provide input to Meme Creator')
-
-   parser.add_argument('-body', type=str)
-   parser.add_argument('-author', type=str)
-   parser.add_argument('-path', type=str)
-
-   
 
    base_path = '/Users/Neeraj/Development/meme_generator/_data/DogQuotes/'
     # print(CSVIngestor.parse(base_path + 'DogQuotesCSV.csv'))
