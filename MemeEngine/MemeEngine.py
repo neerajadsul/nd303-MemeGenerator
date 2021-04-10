@@ -37,12 +37,13 @@ class MemeEngine():
         if text is not None and author is not None:                            
             font = ImageFont.truetype(self.font, self.font_size)
             draw = ImageDraw.Draw(im)
-            x = random.randint(10,int(0.2*width))
+            x = 5
             y = random.randint(10,int(0.8*height))
-            draw.text((x, y), f'{text} - {author}', font=font)
+            text_color = (random.randint(0,255), random.randint(0,255), random.randint(0,255), random.randint(0,255))
+            draw.multiline_text((x, y), f'{text} \n - {author}', font=font, fill=text_color)
         
         self.out_path = os.path.join(
-            './tmp',
+            './static',
             os.path.basename(img_path)
             )
 
