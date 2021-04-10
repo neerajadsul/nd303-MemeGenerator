@@ -78,12 +78,14 @@ def meme_post():
             print(temp_file)
             with open(temp_file, 'wb') as fp:
                 fp.write(response.content)
-        
+                
+        path = ""
         meme = MemeEngine('./static')
-        path = meme.make_meme(temp_file, body, author)
-
-        os.remove(temp_file)
-        
+        try:
+            path = meme.make_meme(temp_file, body, author)
+            os.remove(temp_file)
+        except Exception as e:
+            print(e)
 
     return render_template('meme.html', path=path)
 
