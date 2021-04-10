@@ -42,7 +42,7 @@ class MemeEngine():
             draw.text((x, y), f'{text} - {author}', font=font)
         
         self.out_path = os.path.join(
-            self.out_path,
+            './tmp',
             os.path.basename(img_path)
             )
 
