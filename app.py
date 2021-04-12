@@ -40,7 +40,7 @@ def setup():
 quotes, imgs = setup()
 
 
-@app.route('/')
+@app.route('/', methods=['GET'])
 def meme_rand():
     """ Generate a random meme """
 
