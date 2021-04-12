@@ -1,5 +1,7 @@
-Overview of the project
-=======================
+# Meme Generator
+
+## Overview of the project
+
 The project contains code to generate a meme. It has two modes of operation.
 
 *The command line* based version uses locally stored images to generate a meme using user supplied body text and author name. The meme is stored locally as a file and path to the file is displayed to the user.
@@ -8,11 +10,7 @@ The project contains code to generate a meme. It has two modes of operation.
 Alternatively it can generate a random meme from local images, collection of quotes and authors.
 The meme is displayed in the web browser.
 
-Instructions for setting up and running the app
-===============================================
-
-Project Setup
--------------
+## Instructions for setting up 
 
 1. Clone repository or download as a zip file.
 2. From the terminal, navigate to the projects working directory `path to project\meme_generator`
@@ -20,26 +18,25 @@ Project Setup
 4. Activate the created virtual environment
 4. Use `requirements.txt` to install the dependencies for the project.
 
-Running the app
----------------
-
-**Command line version**
+## Running Command line version
 
 Use `python meme.py -h` to find the usage documentation.
 
 The `python meme.py` the app will randomly select image or quote or the author or all the not supplied arguemnts to generate the meme. The meme image path will be displayed on the command line.
 
-**Web based version**
+## Running web based version
 
-Set the environment variable `FLASK_APP=app.py`
+### Method-1
 
-Then run command `flask run` to start the app server. Use the information displayed in the terminal to open the app in the web browser. Typically it will be pointing at `http://127.0.0.1:5000/`.
+Set the environment variable `FLASK_APP=app.py`. Then run command `flask run` to start the app server. Use the information displayed in the terminal to open the app in the web browser. Typically it will be pointing at `http://127.0.0.1:5000/`.
 
-Sub-modules Documentation
-=====================
+### Method-2
+Run `python app.py`
 
-Module `QuoteEngine`
---------------------
+## Sub-modules Documentation
+
+### Module `QuoteEngine`
+
 `QuoteEngine` defines a class `QuoteModel` for a quote format containing quote `body` text and quote `author`.
 
 `QuoteEngine` consists of data ingestor sub-modules to extract data from `pdf`, `docx`, `txt` or `csv` format files. All supported file formats follow the common interface `IngestorInterface`. The interface provides two methods `can_ingest` and `parse`.
@@ -64,8 +61,8 @@ if (Ingestor.can_ingest(path_to_file)):
 ```
 
 
-Module `MemeEngine`
--------------------
+### Module `MemeEngine`
+
 `MemeEngine` module is reposnsible for:
 
 * Opening the image file, resizing it to specified width.
