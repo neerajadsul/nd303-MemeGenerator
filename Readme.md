@@ -24,11 +24,13 @@ Running the app
 ---------------
 
 **Command line version**
+
 Use `python meme.py -h` to find the usage documentation.
 
 The `python meme.py` the app will randomly select image or quote or the author or all the not supplied arguemnts to generate the meme. The meme image path will be displayed on the command line.
 
 **Web based version**
+
 Set the environment variable `FLASK_APP=app.py`
 
 Then run command `flask run` to start the app server. Use the information displayed in the terminal to open the app in the web browser. Typically it will be pointing at `http://127.0.0.1:5000/`.
@@ -37,13 +39,50 @@ Sub-modules Documentation
 =====================
 
 Module `QuoteEngine`
+--------------------
+`QuoteEngine` defines a class `QuoteModel` for a quote format containing quote `body` text and quote `author`.
 
-Role and Responsibility
-Dependencies
-Examples
+`QuoteEngine` consists of data ingestor sub-modules to extract data from `pdf`, `docx`, `txt` or `csv` format files. All supported file formats follow the common interface `IngestorInterface`. The interface provides two methods `can_ingest` and `parse`.
+
+`can_ingest`, *classmethod*, needs path to the file including filename and it returns if the file is supported.
+
+`parse` *classmethod*, needs path to the file and it returns collection of `QuoteModel` using extracted text from the file.
+
+`Ingestor` provides a way to automatically select and use relevant ingestor based on the file format. 
+
+The module is responsbile for extracting quotes from given file and provide them as a collection of `QuoteModel` objects
+
+* To use the module, import it in your code as 
+```python
+from QuoteEngine import Ingestor, QuoteModel
+```
+Then use `Ingestor` object to extract the data from the file as a collection of `QuoteModel`. For example,
+
+```python
+if (Ingestor.can_ingest(path_to_file)):
+    quotes = Ingestor.parse(path_to_file)
+```
+
 
 Module `MemeEngine`
+-------------------
+`MemeEngine` module is reposnsible for:
 
-Role and Responsibility
-Dependencies
-Examples
+* Opening the image file, resizing it to specified width.
+* Drawing the quote at a random position on the image.
+* Save the file to the disk
+
+It implements `make_meme` method.
+
+To use the module, import it using 
+```python
+from MemeEngine import MemeEngine
+```
+
+Create an instance of the `MemeEngine` and use the methd `make_meme`. For example,
+```python
+meme = MemeEngine(path_to_output)
+meme.make_meme(path_to_image, body_text, author)
+```
+
+This module depends on `Pillow` package for image I/O and processing, in addition to the standard library.
