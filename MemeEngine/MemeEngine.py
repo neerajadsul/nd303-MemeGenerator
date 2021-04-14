@@ -1,12 +1,13 @@
 from PIL import Image, ImageDraw, ImageFont
 import os
 import random
+from itertools import repeat
 
 
 class MemeEngine():
     """ Processes the input image, draws quote on it and saves."""
     font_size = 25
-    font = "fonts/Arial.ttf"
+    font = "fonts/arial.ttf"
     MAX_WIDTH = 500
 
     def __init__(self, out_path):
@@ -40,7 +41,7 @@ class MemeEngine():
             draw = ImageDraw.Draw(im)
             x = 5
             y = random.randint(10, int(0.8*height))
-            text_color = ([random.randint(0, 255)])
+            text_color = random.randint(0, 255)
             draw.multiline_text(
                 (x, y), f'{text} \n - {author}', font=font, fill=text_color)
 
