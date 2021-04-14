@@ -4,6 +4,7 @@ import random
 
 
 class MemeEngine():
+    """ Processes the input image, draws quote on it and saves."""
     font_size = 25
     font = "fonts/Arial.ttf"
     MAX_WIDTH = 500
@@ -25,28 +26,28 @@ class MemeEngine():
         try:
             im = Image.open(img_path)
         except FileNotFoundError:
-            print("Input file not found.")    
+            print("Input file not found.")
             return ""
-            
+
         width = self.MAX_WIDTH if width > self.MAX_WIDTH else width
-            
-        aspect_ratio = width/float(im.size[0])    
+
+        aspect_ratio = width/float(im.size[0])
         height = int(aspect_ratio*float(im.size[1]))
-        im = im.resize((width, height))           
-        
-        if text is not None and author is not None:                            
+        im = im.resize((width, height))
+
+        if text is not None and author is not None:
             font = ImageFont.truetype(self.font, self.font_size)
             draw = ImageDraw.Draw(im)
             x = 5
-            y = random.randint(10,int(0.8*height))
-            text_color = (random.randint(0,255), random.randint(0,255), random.randint(0,255), random.randint(0,255))
-            draw.multiline_text((x, y), f'{text} \n - {author}', font=font, fill=text_color)
-        
+            y = random.randint(10, int(0.8*height))
+            text_color = ([random.randint(0, 255)])
+            draw.multiline_text(
+                (x, y), f'{text} \n - {author}', font=font, fill=text_color)
+
         self.out_path = os.path.join(
             './static',
             os.path.basename(img_path)
             )
-
         im.save(self.out_path)
-            
+
         return self.out_path
