@@ -2,7 +2,7 @@ from PIL import Image, ImageDraw, ImageFont
 import os
 import random
 from itertools import repeat
-
+from .TextHelper import wrap_text
 
 class MemeEngine():
     """ Processes the input image, draws quote on it and saves."""
@@ -37,6 +37,9 @@ class MemeEngine():
         im = im.resize((width, height))
 
         if text is not None and author is not None:
+
+            text = wrap_text(text)
+
             font = ImageFont.truetype(self.font, self.font_size)
             draw = ImageDraw.Draw(im)
             x = 5
