@@ -61,8 +61,8 @@ def meme_post():
     """ Create a user defined meme
 
     Save the image from the image_url as a temp local file.
-    Use MemeEngine to generate a meme using this temp file 
-    and the body and author form paramaters. 
+    Use MemeEngine to generate a meme using this temp file
+    and the body and author form paramaters.
     Remove the temporary saved image.
     Render generated meme page.
     """
@@ -78,7 +78,7 @@ def meme_post():
             print(temp_file)
             with open(temp_file, 'wb') as fp:
                 fp.write(response.content)
-                
+
         path = ""
         meme = MemeEngine('./static')
         try:
