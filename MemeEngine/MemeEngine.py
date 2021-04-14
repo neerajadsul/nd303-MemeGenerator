@@ -43,7 +43,7 @@ class MemeEngine():
             font = ImageFont.truetype(self.font, self.font_size)
             draw = ImageDraw.Draw(im)
             x = 5
-            y = random.randint(10, int(0.8*height))
+            y = random.randint(10, int(0.3*height))
             text_color = random.randint(0, 255)
             draw.multiline_text(
                 (x, y), f'{text} \n - {author}', font=font, fill=text_color)
