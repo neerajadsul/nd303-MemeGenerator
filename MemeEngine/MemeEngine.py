@@ -5,7 +5,7 @@ import random
 
 class MemeEngine():
     font_size = 25
-    font = "fonts/Arial.ttf"
+    font = "fonts/Roboto-BoldItalic.ttf"
     MAX_WIDTH = 500
 
     def __init__(self, out_path):
