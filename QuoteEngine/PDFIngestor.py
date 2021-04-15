@@ -15,7 +15,10 @@ class PDFIngestor(IngestorInterface):
             raise Exception('cannot ingest exception')
 
         temp = 'tmp/' + str(random.randint(1000, 2000)) + '.txt'
-        p = subprocess.run(["pdftotext", "-layout", path, temp], timeout=2)
+        try:
+            p = subprocess.run(["pdftotext", "-layout", path, temp], timeout=2)
+        except FileNotFoundError:
+            print('pdftotext tool is not availble via command line')
         quotes = []
         with open(temp, 'r') as f:
             content = f.readlines()
