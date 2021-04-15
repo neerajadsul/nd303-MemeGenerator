@@ -17,11 +17,12 @@ class PDFIngestor(IngestorInterface):
         temp = 'tmp/' + str(random.randint(1000, 2000)) + '.txt'
         try:
             p = subprocess.run(["pdftotext", "-layout", path, temp], timeout=2)
+            with open(temp, 'r') as f:
+                content = f.readlines()
         except FileNotFoundError:
             print('pdftotext tool is not availble via command line')
         quotes = []
-        with open(temp, 'r') as f:
-            content = f.readlines()
+        
 
         subprocess.run(["rm", temp])
 
