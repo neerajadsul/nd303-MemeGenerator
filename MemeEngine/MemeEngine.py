@@ -4,6 +4,7 @@ import random
 from itertools import repeat
 from .TextHelper import wrap_text
 
+
 class MemeEngine():
     """ Processes the input image, draws quote on it and saves."""
     font_size = 25
@@ -57,6 +58,6 @@ class MemeEngine():
         try:
             im.save(self.out_path)
         except (IOError, FileNotFoundError):
-            print(f'Could not creat file at: {self.out_path}')            
+            print(f'Could not creat file at: {self.out_path}')
 
         return self.out_path
