@@ -11,6 +11,8 @@ class MemeEngine():
     MAX_WIDTH = 500
 
     def __init__(self, out_path):
+        if not os.path.exists(out_path):
+            os.mkdir(out_path)
         self.out_path = out_path
 
     def make_meme(self, img_path, text, author, width=500) -> str:
@@ -52,6 +54,9 @@ class MemeEngine():
             './static',
             os.path.basename(img_path)
             )
-        im.save(self.out_path)
+        try:
+            im.save(self.out_path)
+        except (IOError, FileNotFoundError):
+            print(f'Could not creat file at: {self.out_path}')            
 
         return self.out_path
