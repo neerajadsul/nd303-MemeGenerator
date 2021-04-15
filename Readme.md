@@ -17,6 +17,7 @@ The meme is displayed in the web browser.
 3. Create a virtual environment for the project using Python 3.6+ 
 4. Activate the created virtual environment
 4. Use `requirements.txt` to install the dependencies for the project.
+5. Create two directories inside project directory: `tmp` and `static` for storing image files.
 
 ## Running Command line version
 
