@@ -17,7 +17,8 @@ The meme is displayed in the web browser.
 3. Create a virtual environment for the project using Python 3.6+ 
 4. Activate the created virtual environment
 4. Use `requirements.txt` to install the dependencies for the project.
-5. Create two directories inside project directory: `tmp` and `static` for storing image files.
+5. Create two directories inside project directory: `tmp` and `static` for storing image files. This is handled by the code.
+6. You need to have `pdftotext` avaialble via commandline to us Pdf file as input for Quotes.
 
 ## Running Command line version
 
@@ -61,6 +62,7 @@ if (Ingestor.can_ingest(path_to_file)):
     quotes = Ingestor.parse(path_to_file)
 ```
 
+Note: PdfIngestor depends on the `pdftotext` command line utility.
 
 ### Module `MemeEngine`
 
